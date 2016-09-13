@@ -20,6 +20,10 @@ vcruntime*.dll
 *.ilk
 *.pdb
 
+# ignore generated library files
+*.lib
+!Soar.lib
+
 #
 # eclipse files (for now)
 #

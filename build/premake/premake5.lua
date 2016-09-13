@@ -3,7 +3,6 @@
 --
 -- Target of interest:
 --     vs2013     (Visual Studio 2013)
---     vs2015     (Visual Studio 2015)
 --
 
 -- we must have an ide/compiler specified
@@ -21,6 +20,13 @@ Dep3rdPartyLibPath    = Dep3RDPartyRoot .. "/lib/" .. _ACTION .. "-32"
 print ("3rd Party Paths:")
 print ("  Include   :" .. Dep3rdPartyIncPath)
 print ("  Libraries :" .. Dep3rdPartyLibPath)
+
+--
+-- target directory path for compiled libraries (Lua and Clips)
+--
+targetDirPath = Dep3rdPartyLibPath
+
+print ("Target directory path: " .. targetDirPath)
 
 --
 -- 3rd party library names
@@ -59,6 +65,9 @@ workspace "examples"
       -- enable compiler intrinsics
 --      buildoptions { "/Oi" }
       defines { "WIN32", "_DEBUG" }
+
+   -- libs
+   dofile "libs.lua"
 
    -- examples
    dofile "examples.lua"
