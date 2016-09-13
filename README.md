@@ -15,7 +15,7 @@ Directories
 
 * packages: contains related packages/libraries of interest.
 
-* soar-test1: simple test program that exercises C++ to interation to soar to spawn agents and a soar debugger.
+* soar-test1: test program that exercises C++ to interation with soar.  It causes soar to spawn agents and associated debuggers.
 
 Notes
 ------
