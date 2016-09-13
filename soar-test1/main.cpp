@@ -3,108 +3,82 @@
 #include "windows.h"
 
 #include <iostream>
+#include <string>
 
 int main()
 {
    sml::Kernel* kernel = sml::Kernel::CreateKernelInNewThread();
-
-   // Check that nothing went wrong.  We will always get back a kernel object
-   // even if something went wrong and we have to abort.
    if (kernel->HadError()) {
-      std::cout << "There was an error after creating the Kernel instance" << std::endl;
+      std::cout << "There was an error after creating the Kernel instance\n";
       std::cout << kernel->GetLastErrorDescription() << std::endl;
-      return 0;
+      return EXIT_SUCCESS;
    }
-
    std::cout << "Kernel created\n";
 
-   std::cout << "Creating agent and loading productions\n";
+   // create an agent named "agent"
    sml::Agent* agent = kernel->CreateAgent("agent");
+   // load productions
    agent->LoadProductions("agent.soar");
-   if (kernel->HadError()) {
+   if (agent->HadError()) {
       std::cout << "There was an error loading the production" << std::endl;
-      std::cout << kernel->GetLastErrorDescription() << std::endl;
-      return 0;
+      std::cout << agent->GetLastErrorDescription() << std::endl;
+      return EXIT_SUCCESS;
    }
+   std::cout << "Agent, productions loaded\n";
 
-   //sml::Agent* agent1 = kernel->CreateAgent("agent1");
-   //agent1->LoadProductions("agent.soar");
-   //sml::Agent* agent2 = kernel->CreateAgent("agent2");
-   //agent2->LoadProductions("agent.soar");
-
-   // open soar debugger, make sure the path to debugger is in system path
+   // open soar debugger - make sure the path to debugger is in system path
    static int kernelPort(12121);
-   agent->SpawnDebugger(kernelPort, "C:/book-code/soar-test/3rdparty/bin/SoarJavaDebugger.jar");
+   agent->SpawnDebugger(kernelPort, "C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
 
-   std::cout << "Please connect debugger\n";
+   std::cout << "Hit return when debugger has opened\n";
    system("pause");
 
-   static int initialX = 3;
-   static int initialY = 4;
-   int time = 0;
+   // this is how agents should be run in a production environment
+   // kernel->RunAllAgentsForever();
 
-   std::string World[5][5] = {
-      { "wall", "wall", "wall", "wall", "wall" },
-      { "wall", "empty", "empty", "empty", "wall" },
-      { "wall", "empty", "empty", "empty", "wall" },
-      { "wall", "empty", "empty", "empty", "wall" },
-      { "wall", "wall", "wall", "wall", "wall" }
-   };
+   sml::Identifier* agentInputLink = agent->GetInputLink();
 
-   //The documentation mentions this is how agents should be
-   //run in a production environment
-   //pKernel->RunAllAgentsForever();
+   std::string* s = new std::string("empty");
+   sml::StringElement* wmeFront = agent->CreateStringWME(agentInputLink, "front", s->c_str());
 
-   sml::Identifier* pInputLink = agent->GetInputLink();
+   const int steps = 15;
+   for (int x=0; x < steps; x++) {
+      if (agent->GetRunState() != sml::sml_RUNSTATE_HALTED) {
 
-   //Here I am creating a WME on the input link, it is based on the eaters example
+         std::cout << "Run agent until it produces output " << "step: " << x << std::endl;
+         agent->RunSelfTilOutput();
 
-   sml::StringElement* pWME1 = agent->CreateStringWME(pInputLink, "front", "empty");
-   sml::StringElement* pWME2 = agent->CreateStringWME(pInputLink, "orientation", "north");
-   sml::IntElement* pWME3 = agent->CreateIntWME(pInputLink, "time", time);
-   sml::IntElement* pWME4 = agent->CreateIntWME(pInputLink, "x", initialX);
-   sml::IntElement* pWME5 = agent->CreateIntWME(pInputLink, "y", initialY);
+         // read and process commands from agent
+         const int numCommands = agent->GetNumberCommands();
+         for (int i=0; i < numCommands; i++) {
+            sml::Identifier* command = agent->GetCommand(i);
 
-   int x = initialX;
-   int y = initialY;
+            // this was command returned by agent (update environment)
+            std::cout << "Agent command result : " << command->GetCommandName() << std::endl;
 
-   while (agent->GetRunState() != 3) {
-
-      std::cout << "Run agent until it produces output" << std::endl;
-      agent->RunSelfTilOutput();
-      time++;
-
-      int numberCommands = agent->GetNumberCommands();
-      for (int i = 0; i < numberCommands; i++) {
-         sml::Identifier* pCommand = agent->GetCommand(i);
-
-         std::string name = pCommand->GetCommandName();
-
-         std::cout << name << std::endl;
-         //updateWorld(string[][], int x, int y);
-         if (y != 0) {
-            y--;
-            agent->DestroyWME(pWME1);
-            agent->DestroyWME(pWME5);
-            char* pFrontWorld = &World[x][y][0];
-            pWME1 = agent->CreateStringWME(pInputLink, "front", pFrontWorld);
-            pWME5 = agent->CreateIntWME(pInputLink, "y", y);
+            // mark command as complete
+            command->AddStatusComplete();
          }
+
+         // defines a simple world
+         if (x < steps-5) {
+            *s = "empty";
+         } else {
+            *s = "wall";
+         }
+         agent->Update(wmeFront, s->c_str());
          std::cout << "Sending information on the input link" << std::endl;
-
-         agent->DestroyWME(pWME3);
-         pWME3 = agent->CreateIntWME(pInputLink, "time", time);
-
-         // Then mark the command as completed
-         pCommand->AddStatusComplete();
       }
-
-      std::cout << "Waiting 5 seconds\n";
-      Sleep(6000);
-      std::cout << "Done with wait\n";
-
+      if (agent->GetRunState() == sml::sml_RUNSTATE_HALTED) {
+         std::cout << "Agent HALTED\n";
+      }
    }
 
+   system("pause");
+
+   kernel->Shutdown();
+   delete kernel;
+
    std::cout << "Program finished\n";
-   return 0;
+   return EXIT_SUCCESS;
 }
