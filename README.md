@@ -2,7 +2,7 @@
 AI-Test
 =======
 
-Breeding ground for examples on how to interface C++ to Soar, Lua and Clips.  This include several Read-Evaluate-Print-Loop-based (REPL) examples.
+Breeding ground for examples on how to interface C++ to Soar, Lua, Clips and Duktape.  This include several read-evaluate-print loop (REPL) examples.
 
 Directories
 -----------
@@ -16,6 +16,8 @@ Directories
 * packages: contains related packages/libraries of interest.
 
 * clips-repl: stock REPL included with distribution
+
+* duktape-test1: simple example that calls duktape from C++
 
 * lua-luac: stock lua compiler (i.e., luac) included with distribution
 

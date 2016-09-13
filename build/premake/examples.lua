@@ -1,20 +1,3 @@
---------------------------------------------------------
--- Soar apps
---------------------------------------------------------
-
-project "soar-test1"
-   kind "ConsoleApp"
-   targetname "soar-test1"
-   targetdir "../../soar-test1"
-   debugdir "../../soar-test1"
-   files {
-      "../../soar-test1/**.cpp",
-      "../../soar-test1/**.h"
-   }
-   includedirs { Dep3rdPartyIncPath }
-   libdirs     { Dep3rdPartyLibPath }
-   defines { "_CONSOLE" }
-   links {LibSoar}
 
 --------------------------------------------------------
 -- Lua apps
@@ -150,4 +133,43 @@ project "clips-repl"
       links { "clips_d" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
 
+--------------------------------------------------------
+-- Duktape (i.e. JavaScript)
+--------------------------------------------------------
 
+project "duktape-test1"
+   kind "ConsoleApp"
+   targetname "test1"
+   targetdir "../../duktape-test1"
+   debugdir "../../duktape-test1"
+   files {
+      "../../duktape-test1/**.cpp",
+      "../../duktape-test1/**.c",
+      "../../duktape-test1/**.h",
+      "../../3rdparty/src/duktape-1.5.1/duktape.c"
+   }
+   includedirs { Dep3RDPartyRoot .. "/src/duktape-1.5.1" }
+   defines { "_CONSOLE" }
+   filter "Release32"
+      links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
+   filter "Debug32"
+      links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
+
+
+--------------------------------------------------------
+-- Soar apps
+--------------------------------------------------------
+
+project "soar-test1"
+   kind "ConsoleApp"
+   targetname "soar-test1"
+   targetdir "../../soar-test1"
+   debugdir "../../soar-test1"
+   files {
+      "../../soar-test1/**.cpp",
+      "../../soar-test1/**.h"
+   }
+   includedirs { Dep3rdPartyIncPath }
+   libdirs     { Dep3rdPartyLibPath }
+   defines { "_CONSOLE" }
+   links {LibSoar}

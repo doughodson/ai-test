@@ -24,3 +24,4 @@ project "clips"
       "../../3rdparty/src/clips-6.30/**.c"
    }
    targetname "clips"
+
