@@ -2,14 +2,14 @@
 -- Example applications
 --------------------------------------------------------
 
-project "test1"
+project "soar-test1"
    kind "ConsoleApp"
-   targetname "test1"
-   targetdir "../../test1"
-   debugdir "../../test1"
+   targetname "soar-test1"
+   targetdir "../../soar-test1"
+   debugdir "../../soar-test1"
    files {
-      "../../test1/**.cpp",
-      "../../test1/**.h"
+      "../../soar-test1/**.cpp",
+      "../../soar-test1/**.h"
    }
    includedirs { Dep3rdPartyIncPath }
    libdirs     { Dep3rdPartyLibPath }
