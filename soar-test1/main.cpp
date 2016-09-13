@@ -67,7 +67,7 @@ int main()
             *s = "wall";
          }
          agent->Update(wmeFront, s->c_str());
-         std::cout << "Sending information on the input link" << std::endl;
+         std::cout << "Updated information on input link" << std::endl;
       }
       if (agent->GetRunState() == sml::sml_RUNSTATE_HALTED) {
          std::cout << "Agent HALTED\n";
