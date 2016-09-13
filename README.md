@@ -2,32 +2,32 @@
 AI-Test
 =======
 
-Breeding ground for examples on how to interface C++ to Soar, Lua and Clips.  This include several real-evaluate-print-loop (REPL) examples.
+Breeding ground for examples on how to interface C++ to Soar, Lua and Clips.  This include several Read-Evaluate-Print-Loop-based (REPL) examples.
 
 Directories
 -----------
 
 * 3rdparty: contains include files and libraries for 3rd party dependencies. Soar library has been manually placed here, the lua and clips library are compiled.
 
-* build: Run make.bat in build/premake directory to create Visual Studio/C++ project and solution files.
+* build: run make.bat in build/premake directory to create Visual Studio/C++ project and solution files.
 
-* docs: collected documentation
+* docs: documentation of interest
 
 * packages: contains related packages/libraries of interest.
 
-* clips-repl: REPL for clips
+* clips-repl: stock REPL included with distribution
 
-* lua-luac: lua compiler (i.e., luac)
+* lua-luac: stock lua compiler (i.e., luac) included with distribution
 
-* lua-repl: REPL included with stock lua distribution
+* lua-repl: stock REPL included with distribution
 
-* lua-repl2: very simple REPL for lua
+* lua-repl2: simple and dumb REPL
 
-* lua-repl3: REPL for lua with extensions
+* lua-repl3: lua REPL extensioned with some custom C functions
 
-* lua-test1: example of extending Lua with Luna
+* lua-test1: example of extending Lua with a C++ class using Luna
 
-* soar-test1: test program that exercises C++ to interation with soar.  It causes soar to spawn agents and associated debuggers.
+* soar-test1: test program that exercises C++ to interation with soar.  It causes soar to spawn agents with associated debuggers.
 
 Notes
 ------
