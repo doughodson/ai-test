@@ -33,7 +33,7 @@ print ("Target directory path: " .. targetDirPath)
 --
 LibSoar  = "Soar"
 
-workspace "examples"
+workspace "ai-test"
 
    -- destination directory for generated solution/project files
    location ("../" .. _ACTION)
