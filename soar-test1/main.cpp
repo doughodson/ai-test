@@ -27,8 +27,9 @@ int main()
    std::cout << "Agent, productions loaded\n";
 
    // open soar debugger - make sure the path to debugger is in system path
-   static int kernelPort(12121);
-   agent->SpawnDebugger(kernelPort, "C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
+   const int kernelPort(12121);
+   const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
+   agent->SpawnDebugger(kernelPort, debugger.c_str());
 
    std::cout << "Hit return when debugger has opened\n";
    system("pause");
