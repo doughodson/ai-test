@@ -1,20 +1,17 @@
-indiff -g #use greedy decision making
-indiff -e 0.1 #low epsilon
-
 # Initialization operator
-sp {propose*initialize-eater
+sp {propose*initialize-mover
    (state <s> ^superstate nil
              -^name)
 -->
    (<s> ^operator <o> +)
-   (<o> ^name eater)
+   (<o> ^name mover)
 }
 
-sp {apply*initialize-eater
+sp {apply*initialize-mover
    (state <s> ^operator <op>)
-   (<op> ^name eater)
+   (<op> ^name mover)
 -->
-   (<s> ^name eater)
+   (<s> ^name mover)
 }
 
 # cleans the output-link once commands complete
@@ -53,11 +50,12 @@ sp {elaborate*state*io
    (<s> ^io <io>)
 }
 
-sp {random*propose*forward
-	(state <s> ^name eater
-			^io.input-link.front)
+# Rule fires if there is an empty in front
+sp {if-empty*propose*forward
+	(state <s> ^name mover
+			^io.input-link.front empty)
 -->
-	(<s> ^operator <op> + =)
+	(<s> ^operator <op> + )
 	(<op> ^name forward)}
 
 sp {apply*forward
@@ -66,33 +64,20 @@ sp {apply*forward
 	(<op> ^name forward)
 -->
 	(<out> ^forward <f>)}
-
-#sp {random*propose*rotate
-#	(state <s> ^name eater
-#			^io.input-link.front)
-#-->
-#	(<s> ^operator <op> + =)
-#	(<op> ^name rotate)}
-#
-#sp {apply*rotate
-#	(state <s> ^operator <op>
-#				^io.output-link <out>)
-#	(<op> ^name rotate)
-#-->
-#	(<out> ^rotate <r>)}
 	
-sp {task*complete
-   (state <s> ^name eater
-   ^io.input-link.front wall)
--->
-   (halt)
-}
-
- 
-sp {eater*reject*forward*wall
-	(state <s> ^operator <op> +
+# Rule fires if there is a wall in front
+sp {if-wall*propose*stop
+	(state <s> ^name mover
 			^io.input-link.front wall)
-	(<op> ^name forward)
 -->
-	(<s> ^operator <op> -)}
+	(<s> ^operator <op> + = )
+	(<op> ^name stop)}
+
+sp {apply*stop
+	(state <s> ^operator <op>
+				^io.output-link <out>)
+	(<op> ^name stop)
+-->
+	(<out> ^stop <f>)}	
+
 
