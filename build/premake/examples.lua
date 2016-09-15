@@ -160,6 +160,20 @@ project "duktape-test1"
 -- Soar apps
 --------------------------------------------------------
 
+project "soar-hello-world"
+   kind "ConsoleApp"
+   targetname "soar-hello-world"
+   targetdir "../../soar-hello-world"
+   debugdir "../../soar-hello-world"
+   files {
+      "../../soar-hello-world/**.cpp",
+      "../../soar-hello-world/**.h"
+   }
+   includedirs { Dep3rdPartyIncPath }
+   libdirs     { Dep3rdPartyLibPath }
+   defines { "_CONSOLE" }
+   links {LibSoar}
+
 project "soar-test1"
    kind "ConsoleApp"
    targetname "soar-test1"
