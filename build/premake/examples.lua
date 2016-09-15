@@ -174,14 +174,14 @@ project "soar-hello-world"
    defines { "_CONSOLE" }
    links {LibSoar}
 
-project "soar-test1"
+project "soar-basicIo"
    kind "ConsoleApp"
-   targetname "soar-test1"
-   targetdir "../../soar-test1"
-   debugdir "../../soar-test1"
+   targetname "soar-basicIo"
+   targetdir "../../soar-basicIo"
+   debugdir "../../soar-basicIo"
    files {
-      "../../soar-test1/**.cpp",
-      "../../soar-test1/**.h"
+      "../../soar-basicIo/**.cpp",
+      "../../soar-basicIo/**.h"
    }
    includedirs { Dep3rdPartyIncPath }
    libdirs     { Dep3rdPartyLibPath }

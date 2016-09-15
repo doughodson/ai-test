@@ -29,7 +29,9 @@ Directories
 
 * lua-test1: example of extending Lua with a C++ class using Luna
 
-* soar-test1: test program that exercises C++ to interation with soar.  It causes soar to spawn agents with associated debuggers.
+* soar-basicIo: test program that exercises C++ to interation I/O with soar.  It causes soar to spawn agents with associated debuggers.
+
+* soar-hello-world: simpliest example of creating an agent and feeding it a soar 'script'
 
 Notes
 ------
