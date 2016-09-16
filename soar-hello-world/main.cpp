@@ -7,6 +7,7 @@
 int main(int, char**)
 {
    sml::Kernel* kernel = sml::Kernel::CreateKernelInNewThread();
+
    sml::Agent* agent = kernel->CreateAgent("soar");
 
    std::cout << agent->ExecuteCommandLine("echo Hello World");

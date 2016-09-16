@@ -18,10 +18,15 @@ int main(int, char**)
 
    // create an agent named "agent"
    sml::Agent* agent = kernel->CreateAgent("agent");
+   if (kernel->HadError()) {
+      std::cout << kernel->GetLastErrorDescription() << std::endl;
+      return EXIT_SUCCESS;
+   }
+
    // load productions
    agent->LoadProductions("agent.soar");
    if (agent->HadError()) {
-      std::cout << "There was an error loading the production" << std::endl;
+      std::cout << "There was an error loading productions" << std::endl;
       std::cout << agent->GetLastErrorDescription() << std::endl;
       return EXIT_SUCCESS;
    }

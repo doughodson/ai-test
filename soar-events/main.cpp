@@ -21,13 +21,18 @@ int main(int, char**)
    }
 
    sml::Agent* agent = kernel->CreateAgent("agent");
+   if (kernel->HadError()) {
+      std::cout << kernel->GetLastErrorDescription() << std::endl;
+      return EXIT_SUCCESS;
+   }
+
    agent->LoadProductions("agent.soar");
-   agent->SetBlinkIfNoChange(TRUE);
    if (agent->HadError()) {
-      std::cout << "There was an error loading the production\n";
+      std::cout << "There was an error loading productions\n";
       std::cout << agent->GetLastErrorDescription() << std::endl;
       return EXIT_SUCCESS;
    }
+   agent->SetBlinkIfNoChange(TRUE);
 
    //This is the command to open a Debugger window
    const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
