@@ -33,6 +33,8 @@ Directories
 
 * soar-hello-world: simpliest example of creating an agent and feeding it a soar 'script'
 
+* soar-events: example that demostrates soar callback event system
+
 Notes
 ------
 

@@ -187,3 +187,17 @@ project "soar-basicIo"
    libdirs     { Dep3rdPartyLibPath }
    defines { "_CONSOLE" }
    links {LibSoar}
+
+project "soar-events"
+   kind "ConsoleApp"
+   targetname "soar-events"
+   targetdir "../../soar-events"
+   debugdir "../../soar-events"
+   files {
+      "../../soar-events/**.cpp",
+      "../../soar-events/**.h"
+   }
+   includedirs { Dep3rdPartyIncPath }
+   libdirs     { Dep3rdPartyLibPath }
+   defines { "_CONSOLE" }
+   links {LibSoar}

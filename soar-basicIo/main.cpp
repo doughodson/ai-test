@@ -5,9 +5,10 @@
 #include <iostream>
 #include <string>
 
-int main()
+int main(int, char**)
 {
-   sml::Kernel* kernel = sml::Kernel::CreateKernelInNewThread();
+   const int kernelPort(12121);
+   sml::Kernel* kernel = sml::Kernel::CreateKernelInNewThread(kernelPort);
    if (kernel->HadError()) {
       std::cout << "There was an error after creating the Kernel instance\n";
       std::cout << kernel->GetLastErrorDescription() << std::endl;
@@ -27,7 +28,6 @@ int main()
    std::cout << "Agent, productions loaded\n";
 
    // open soar debugger - make sure the path to debugger is in system path
-   const int kernelPort(12121);
    const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
    agent->SpawnDebugger(kernelPort, debugger.c_str());
 

@@ -4,7 +4,7 @@
 #include <string>
 #include "soar/sml_Client.h"
 
-int main(int argc, char** argv)
+int main(int, char**)
 {
    sml::Kernel* kernel = sml::Kernel::CreateKernelInNewThread();
    sml::Agent* agent = kernel->CreateAgent("soar");
