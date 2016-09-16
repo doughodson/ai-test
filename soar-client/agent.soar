@@ -1,0 +1,83 @@
+# Initialization operator
+sp {propose*initialize-mover
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> +)
+   (<o> ^name mover)
+}
+
+sp {apply*initialize-mover
+   (state <s> ^operator <op>)
+   (<op> ^name mover)
+-->
+   (<s> ^name mover)
+}
+
+# cleans the output-link once commands complete
+sp {apply*cleanup*output-link
+   (state <s> ^operator <op>
+              ^superstate nil
+              ^io.output-link <out>)
+   (<out> ^<cmd> <id>)
+   (<id> ^status)
+-->
+   (<out> ^<cmd> <id> -)
+}
+
+# misc useful elaboration rules
+sp {elaborate*state*name
+   (state <s> ^superstate.operator.name <name>)
+-->
+   (<s> ^name <name>)
+}
+
+sp {elaborate*state*top-state
+   (state <s> ^superstate.top-state <ts>)
+-->
+   (<s> ^top-state <ts>)
+}
+
+sp {elaborate*top-state*top-state
+   (state <s> ^superstate nil)
+-->
+   (<s> ^top-state <s>)
+}
+
+sp {elaborate*state*io
+   (state <s> ^superstate.io <io>)
+-->
+   (<s> ^io <io>)
+}
+
+# Rule fires if there is an empty in front
+sp {if-empty*propose*forward
+	(state <s> ^name mover
+			^io.input-link.front empty)
+-->
+	(<s> ^operator <op> + )
+	(<op> ^name forward)}
+
+sp {apply*forward
+	(state <s> ^operator <op>
+				^io.output-link <out>)
+	(<op> ^name forward)
+-->
+	(<out> ^forward <f>)}
+	
+# Rule fires if there is a wall in front
+sp {if-wall*propose*stop
+	(state <s> ^name mover
+			^io.input-link.front wall)
+-->
+	(<s> ^operator <op> + = )
+	(<op> ^name stop)}
+
+sp {apply*stop
+	(state <s> ^operator <op>
+				^io.output-link <out>)
+	(<op> ^name stop)
+-->
+	(<out> ^stop <f>)}	
+
+

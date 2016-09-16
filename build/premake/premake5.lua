@@ -70,4 +70,7 @@ workspace "ai-test"
    dofile "libs.lua"
 
    -- examples
-   dofile "examples.lua"
+   dofile "examples-clips.lua"
+   dofile "examples-duktape.lua"
+   dofile "examples-lua.lua"
+   dofile "examples-soar.lua"

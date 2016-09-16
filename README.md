@@ -35,6 +35,10 @@ Directories
 
 * soar-events: example that demostrates soar callback event system
 
+* soar-client: connects to a remote kernel in a different process
+
+* soar-server: spawns a kernel instance in a new thread and does nothing else
+
 Notes
 ------
 
