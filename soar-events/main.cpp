@@ -39,8 +39,8 @@ int main(int, char**)
    }
 //   agent->SetBlinkIfNoChange(TRUE);
 
-	agent->AddOutputHandler("forward", forwardEventHandler, agent, NULL);
-	agent->AddOutputHandler("stop", stopEventHandler, agent, NULL);
+   agent->AddOutputHandler("forward", forwardEventHandler, agent, NULL);
+   agent->AddOutputHandler("stop", stopEventHandler, agent, NULL);
 
    // open debugger
 // const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
