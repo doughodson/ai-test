@@ -5,9 +5,14 @@
 #include <iostream>
 #include <string>
 
-void MyUpdateEventHandler(sml::smlSystemEventId id, void* pUserData, sml::Kernel* kernel, sml::smlRunFlags runFlags)
+void forwardEventHandler(void* userData, sml::Agent* agent, char const* commandName, sml::WMElement* outputWme)
 {
-   std::cout << "The output handler was called\n";
+   std::cout << "Foward event handler was called\n";
+}
+
+void stopEventHandler(void* userData, sml::Agent* agent, char const* commandName, sml::WMElement* outputWme)
+{
+   std::cout << "Stop event handler was called\n";
 }
 
 int main(int, char**)
@@ -32,71 +37,65 @@ int main(int, char**)
       std::cout << agent->GetLastErrorDescription() << std::endl;
       return EXIT_SUCCESS;
    }
-   agent->SetBlinkIfNoChange(TRUE);
+//   agent->SetBlinkIfNoChange(TRUE);
 
-   //This is the command to open a Debugger window
-   const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
-   //pAgent->SpawnDebugger(kernelPort, debugger.c_str());
-   static int initialX = 0;
+	agent->AddOutputHandler("forward", forwardEventHandler, agent, NULL);
+	agent->AddOutputHandler("stop", stopEventHandler, agent, NULL);
 
-   std::string World[20] = { "empty", "empty", "empty", "empty", "empty", "empty",
-      "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty",
-      "empty", "empty", "empty", "empty", "empty", "wall" };
+   // open debugger
+// const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
+// pAgent->SpawnDebugger(kernelPort, debugger.c_str());
 
    Sleep(5000);
+
    //Running Agents
    //UpdateEventHandler handler = 
-   int callBackId = kernel->RegisterForUpdateEvent(sml::smlEVENT_AFTER_ALL_OUTPUT_PHASES, MyUpdateEventHandler, FALSE);
-   kernel->RunAllAgentsForever();
+//   int callBackId = kernel->RegisterForUpdateEvent(sml::smlEVENT_AFTER_ALL_OUTPUT_PHASES, MyUpdateEventHandler, FALSE);
+//   kernel->RunAllAgentsForever();
 
-   sml::Identifier* pInputLink = agent->GetInputLink();
+   sml::Identifier* agentInputLink = agent->GetInputLink();
 
-   //Here I am creating a WME on the input link, it is based on the eaters example
+   std::string* s = new std::string("empty");
+   sml::StringElement* wmeFront = agent->CreateStringWME(agentInputLink, "front", s->c_str());
 
-   sml::StringElement* pWME1 = agent->CreateStringWME(pInputLink, "front", "empty");
+   const int steps = 15;
+   for (int x=0; x < steps; x++) {
+      if (agent->GetRunState() != sml::sml_RUNSTATE_HALTED) {
 
-   int x = initialX;
+         std::cout << "Run agent until it produces output " << "step: " << x << std::endl;
+         agent->RunSelfTilOutput();
 
-   while (agent->GetRunState() != sml::sml_RUNSTATE_HALTED) {
-      
-      std::cout << "\nRunning agent until output\n";
-      agent->RunSelfTilOutput();
+         // read and process commands from agent
+         const int numCommands = agent->GetNumberCommands();
+         for (int i=0; i < numCommands; i++) {
+            sml::Identifier* command = agent->GetCommand(i);
 
-      const int numberCommands = agent->GetNumberCommands();
-      std::cout << "Number if commands in output link: " << numberCommands << std::endl;
+            // this was command returned by agent (update environment)
+            std::cout << "Agent command result : " << command->GetCommandName() << std::endl;
 
-      for (int i = 0; i < numberCommands; i++) {
-         sml::Identifier* pCommand = agent->GetCommand(i);
-
-         std::string name = pCommand->GetCommandName();
-
-         std::cout << "Received from Soar: " << name << std::endl;
-
-         if (name == "forward"){
-            x++;
-            char* pFrontWorld = &World[x][0];
-            std::cout << "Sending information on the input link" << std::endl;
-            std::cout << "Sending front " << pFrontWorld << std::endl;
-            agent->Update(pWME1, pFrontWorld);
-
-         }
-         else if (name == "stop") {
-
-            char* pFrontWorld = &World[x][0];
-            std::cout << "Sending information on the input link\n";
-            std::cout << "Sending front " << pFrontWorld << std::endl;
-            agent->Update(pWME1, pFrontWorld);
+            // mark command as complete
+            command->AddStatusComplete();
          }
 
-         // Then mark the command as completed
-         pCommand->AddStatusComplete();
-
+         // defines a simple world
+         if (x < steps-5) {
+            *s = "empty";
+         } else {
+            *s = "wall";
+         }
+         agent->Update(wmeFront, s->c_str());
+         std::cout << "Updated information on input link" << std::endl;
+      }
+      if (agent->GetRunState() == sml::sml_RUNSTATE_HALTED) {
+         std::cout << "Agent HALTED\n";
       }
    }
-   std::cout << "Enter to exit\n";
-   while (std::cin.get() != '\n');
+
+   system("pause");
+
    kernel->Shutdown();
    delete kernel;
 
+   std::cout << "Program finished\n";
    return EXIT_SUCCESS;
 }
