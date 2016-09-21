@@ -33,6 +33,7 @@ vcruntime*.dll
 
 # executables
 *.exe
+!lua53.exe
 !premake5-alpha9.exe
 
 # compiled object files
