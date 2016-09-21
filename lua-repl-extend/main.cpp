@@ -4,27 +4,38 @@
 ** See Copyright Notice in lua.h
 */
 
-//#define lua_c
-
-#include "mylib.h"
+extern "C" {
+#include "lprefix.h"
+}
 
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-extern "C" {
-#include "lprefix.h"
+//---------------------------------------------------------------------------------
+// Additions to stock REPL to extend
+//---------------------------------------------------------------------------------
+#include <lua.hpp>
+
+extern int luaopen_mylib(lua_State*);   // used to bind library with lua
+
+static const luaL_Reg mylibs[] = {
+  {"mylib", luaopen_mylib},
+  {NULL, NULL}
+};
+
+LUALIB_API void luaL_openmylibs (lua_State *L) {
+  const luaL_Reg *lib;
+  /* "require" functions from 'loadedlibs' and set results to global table */
+  for (lib = mylibs; lib->func; lib++) {
+    luaL_requiref(L, lib->name, lib->func, 1);
+    lua_pop(L, 1);  /* remove lib */
+  }
 }
 
-#ifdef __cplusplus
-# include <lua.hpp>
-#else
-# include <lua.h>
-# include <lualib.h>
-# include <lauxlib.h>
-#endif
-
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
 
 #if !defined(LUA_PROMPT)
 #define LUA_PROMPT		"> "
@@ -592,20 +603,6 @@ static int pmain (lua_State *L) {
   return 1;
 }
 
-static const luaL_Reg mylibs[] = {
-  {"mylib", luaopen_mylib},
-  {NULL, NULL}
-};
-
-LUALIB_API void luaL_openmylibs (lua_State *L) {
-  const luaL_Reg *lib;
-  /* "require" functions from 'loadedlibs' and set results to global table */
-  for (lib = mylibs; lib->func; lib++) {
-    luaL_requiref(L, lib->name, lib->func, 1);
-    lua_pop(L, 1);  /* remove lib */
-  }
-}
-
 int main (int argc, char **argv)
 {
   int status(0), result(0);
@@ -615,7 +612,7 @@ int main (int argc, char **argv)
     return EXIT_FAILURE;
   }
 
-  // register builtin funcs
+  // register builtin funcs with this instance of state
   luaL_openmylibs(L);
 
   lua_pushcfunction(L, &pmain);  /* to call 'pmain' in protected mode */
