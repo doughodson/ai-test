@@ -1,5 +1,3 @@
-﻿
-
 testing()
 testing()
 local t1 = testObj('test1')
