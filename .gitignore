@@ -33,6 +33,8 @@ vcruntime*.dll
 
 # executables
 *.exe
+*.dll
+*.exp
 !lua53.exe
 !premake5-alpha9.exe
 

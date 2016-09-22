@@ -1,6 +1,6 @@
      
 -- lua
-project "lua"
+project "lua-5.3.3"
    kind "StaticLib"
    -- destination directory for compiled binary target
    targetdir (targetDirPath)
@@ -11,10 +11,23 @@ project "lua"
       "../../3rdparty/src/lua-5.3.3/**.c"
    }
    defines { "LUA_COMPAT_MODULE" }
-   targetname "lua"
+   targetname "lua-5.3.3"
+
+project "lua-5.1.5"
+   kind "StaticLib"
+   -- destination directory for compiled binary target
+   targetdir (targetDirPath)
+   files {
+      "../../3rdparty/src/lua-5.1.5/**.h",
+      "../../3rdparty/src/lua-5.1.5/**.hpp",
+      "../../3rdparty/src/lua-5.1.5/**.cpp",
+      "../../3rdparty/src/lua-5.1.5/**.c"
+   }
+   defines { "LUA_COMPAT_MODULE" }
+   targetname "lua-5.1.5"
 
 -- clips
-project "clips"
+project "clips-6.30"
    kind "StaticLib"
    -- destination directory for compiled binary target
    targetdir (targetDirPath)
@@ -23,5 +36,5 @@ project "clips"
       "../../3rdparty/src/clips-6.30/**.cpp",
       "../../3rdparty/src/clips-6.30/**.c"
    }
-   targetname "clips"
+   targetname "clips-6.30"
 

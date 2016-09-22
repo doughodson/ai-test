@@ -18,9 +18,9 @@ project "clips-repl"
    libdirs     { Dep3rdPartyLibPath }
    defines { "_CONSOLE" }
    filter "Release32"
-      links { "clips" }
+      links { "clips-6.30" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
    filter "Debug32"
-      links { "clips_d" }
+      links { "clips-6.30_d" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
 
