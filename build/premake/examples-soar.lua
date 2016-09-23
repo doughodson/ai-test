@@ -24,6 +24,7 @@ project "soar-basicIo"
    debugdir "../../soar-basicIo"
    files {
       "../../soar-basicIo/**.cpp",
+      "../../soar-basicIo/**.hpp",
       "../../soar-basicIo/**.h"
    }
    includedirs { Dep3rdPartyIncPath }
@@ -38,6 +39,7 @@ project "soar-events"
    debugdir "../../soar-events"
    files {
       "../../soar-events/**.cpp",
+      "../../soar-events/**.hpp",
       "../../soar-events/**.h"
    }
    includedirs { Dep3rdPartyIncPath }

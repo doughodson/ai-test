@@ -39,8 +39,7 @@ int main(int, char**)
    std::cout << "Hit return after debugger opens\n";
    system("pause");
 
-   // this is how agents should be run in a production environment
-   // kernel->RunAllAgentsForever();
+   std::cout << "Agent input link and initial data set\n";
 
    sml::Identifier* agentInputLink = agent->GetInputLink();
 

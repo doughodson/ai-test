@@ -2,17 +2,52 @@
 #include "soar/sml_Client.h"
 #include "windows.h"
 
+#include "AgentData.hpp"
+
 #include <iostream>
 #include <string>
 
-void forwardEventHandler(void* userData, sml::Agent* agent, char const* commandName, sml::WMElement* outputWme)
+//
+// kernel events
+//
+
+//typedef void(* sml::UpdateEventHandler) (smlUpdateEventId id, void *pUserData, Kernel *pKernel, smlRunFlags runFlags)
+void updateEventHandler(sml::smlUpdateEventId id, void* userData, sml::Kernel* kernel, sml::smlRunFlags runFlags)
 {
-   std::cout << "Foward event handler was called\n";
+   // check for output (handled by callbacks), update world state, send new input
+
+   // delay
+   std::cout << "\nKernel update event triggered - Sleeping for 3 seconds\n";
+   Sleep(3000);
+
+   // send new input
+   AgentData* agentData = static_cast<AgentData*>(userData);
+
+   static int steps(0);
+   if (steps < 5) {
+      agentData->agent->Update(agentData->wmeFront, "empty");
+   } else {
+      agentData->agent->Update(agentData->wmeFront, "wall");
+   }
+   steps++;
+   std::cout << "Updated information on input link" << std::endl;
+
+   agentData->agent->ClearOutputLinkChanges();
+
 }
 
-void stopEventHandler(void* userData, sml::Agent* agent, char const* commandName, sml::WMElement* outputWme)
+//
+// agent events
+//
+
+void forwardEventHandler(void* userData, sml::Agent* agent, char const* cmdName, sml::WMElement* outputWme)
 {
-   std::cout << "Stop event handler was called\n";
+   std::cout << "Agent: Foward event handler was called for " << agent->GetAgentName() << "\n";
+}
+
+void stopEventHandler(void* userData, sml::Agent* agent, char const* cmdName, sml::WMElement* outputWme)
+{
+   std::cout << "Agent: Stop event handler was called for " << agent->GetAgentName() << "\n";
 }
 
 int main(int, char**)
@@ -25,77 +60,52 @@ int main(int, char**)
       return EXIT_SUCCESS;
    }
 
-   sml::Agent* agent = kernel->CreateAgent("agent");
+   sml::Agent* agent1 = kernel->CreateAgent("agent1");
    if (kernel->HadError()) {
       std::cout << kernel->GetLastErrorDescription() << std::endl;
       return EXIT_SUCCESS;
    }
 
-   agent->LoadProductions("agent.soar");
-   if (agent->HadError()) {
+   agent1->LoadProductions("agent.soar");
+   if (agent1->HadError()) {
       std::cout << "There was an error loading productions\n";
-      std::cout << agent->GetLastErrorDescription() << std::endl;
+      std::cout << agent1->GetLastErrorDescription() << std::endl;
       return EXIT_SUCCESS;
    }
+
 //   agent->SetBlinkIfNoChange(TRUE);
 
-   agent->AddOutputHandler("forward", forwardEventHandler, agent, NULL);
-   agent->AddOutputHandler("stop", stopEventHandler, agent, NULL);
-
    // open debugger
-// const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
-// pAgent->SpawnDebugger(kernelPort, debugger.c_str());
+   const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
+   agent1->SpawnDebugger(kernelPort, debugger.c_str());
 
-   Sleep(5000);
+   std::cout << "Hit return after debugger opens\n";
+   system("pause");
 
-   //Running Agents
-   //UpdateEventHandler handler = 
-//   int callBackId = kernel->RegisterForUpdateEvent(sml::smlEVENT_AFTER_ALL_OUTPUT_PHASES, MyUpdateEventHandler, FALSE);
-//   kernel->RunAllAgentsForever();
+	AgentData* agentData1 = new AgentData(agent1);
 
-   sml::Identifier* agentInputLink = agent->GetInputLink();
+   // int Kernel::RegisterForUpdateEvent(smlUpdateEventId id, UpdateEventHandler handler, void* pUserData, bool addToBack = true)
+   kernel->RegisterForUpdateEvent(sml::smlEVENT_AFTER_ALL_OUTPUT_PHASES, updateEventHandler, agentData1);
 
-   std::string* s = new std::string("empty");
-   sml::StringElement* wmeFront = agent->CreateStringWME(agentInputLink, "front", s->c_str());
+   //
+   // AddOutputHandler (char const *pAttributeName, OutputEventHandler handler, void *pUserData, bool addToBack=true)
+   // Register an "Output event handler". This is one way to be notified when output occurs on the output link. You
+   // register for a specific attribute name (e.g. "move") and when that attribute is added to the output link the
+   // handler you have registered for that name is called.
+   //
+   agent1->AddOutputHandler("forward", forwardEventHandler, agentData1, NULL);
+   agent1->AddOutputHandler("stop", stopEventHandler, agentData1, NULL);
 
-   const int steps = 15;
-   for (int x=0; x < steps; x++) {
-      if (agent->GetRunState() != sml::sml_RUNSTATE_HALTED) {
-
-         std::cout << "Run agent until it produces output " << "step: " << x << std::endl;
-         agent->RunSelfTilOutput();
-
-         // read and process commands from agent
-         const int numCommands = agent->GetNumberCommands();
-         for (int i=0; i < numCommands; i++) {
-            sml::Identifier* command = agent->GetCommand(i);
-
-            // this was command returned by agent (update environment)
-            std::cout << "Agent command result : " << command->GetCommandName() << std::endl;
-
-            // mark command as complete
-            command->AddStatusComplete();
-         }
-
-         // defines a simple world
-         if (x < steps-5) {
-            *s = "empty";
-         } else {
-            *s = "wall";
-         }
-         agent->Update(wmeFront, s->c_str());
-         std::cout << "Updated information on input link" << std::endl;
-      }
-      if (agent->GetRunState() == sml::sml_RUNSTATE_HALTED) {
-         std::cout << "Agent HALTED\n";
-      }
-   }
-
+   kernel->RunAllAgentsForever();
+   std::cout << "Kernel running forever\n";
    system("pause");
 
    kernel->Shutdown();
    delete kernel;
 
+   system("pause");
    std::cout << "Program finished\n";
+   system("pause");
+
    return EXIT_SUCCESS;
 }
