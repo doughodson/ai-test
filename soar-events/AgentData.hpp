@@ -2,8 +2,6 @@
 #ifndef __AgentData_H__
 #define __AgentData_H__
 
-#include <string>
-
 namespace sml { class Agent; class Identifier; class StringElement; }
 
 class AgentData

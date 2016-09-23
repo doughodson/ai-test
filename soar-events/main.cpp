@@ -93,8 +93,8 @@ int main(int, char**)
    // register for a specific attribute name (e.g. "move") and when that attribute is added to the output link the
    // handler you have registered for that name is called.
    //
-   agent1->AddOutputHandler("forward", forwardEventHandler, agentData1, NULL);
-   agent1->AddOutputHandler("stop", stopEventHandler, agentData1, NULL);
+   agent1->AddOutputHandler("forward", forwardEventHandler, agentData1);
+   agent1->AddOutputHandler("stop", stopEventHandler, agentData1);
 
    kernel->RunAllAgentsForever();
    std::cout << "Kernel running forever\n";
@@ -103,7 +103,6 @@ int main(int, char**)
    kernel->Shutdown();
    delete kernel;
 
-   system("pause");
    std::cout << "Program finished\n";
    system("pause");
 
