@@ -36,7 +36,7 @@ int main(int, char**)
    const std::string debugger("C:/book-code/ai-test/3rdparty/bin/SoarJavaDebugger.jar");
    agent->SpawnDebugger(kernelPort, debugger.c_str());
 
-   std::cout << "Hit return when debugger has opened\n";
+   std::cout << "Hit return after debugger opens\n";
    system("pause");
 
    // this is how agents should be run in a production environment
@@ -49,35 +49,31 @@ int main(int, char**)
 
    const int steps = 15;
    for (int x=0; x < steps; x++) {
-      if (agent->GetRunState() != sml::sml_RUNSTATE_HALTED) {
 
-         std::cout << "Run agent until it produces output " << "step: " << x << std::endl;
-         agent->RunSelfTilOutput();
+      Sleep(5000);
+      std::cout << "Run agent until it produces output " << "step: " << x << std::endl;
+      agent->RunSelfTilOutput();
 
-         // read and process commands from agent
-         const int numCommands = agent->GetNumberCommands();
-         for (int i=0; i < numCommands; i++) {
-            sml::Identifier* command = agent->GetCommand(i);
+      // read and process commands from agent
+      const int numCommands = agent->GetNumberCommands();
+      for (int i=0; i < numCommands; i++) {
+         sml::Identifier* command = agent->GetCommand(i);
 
-            // this was command returned by agent (update environment)
-            std::cout << "Agent command result : " << command->GetCommandName() << std::endl;
+         // this was command returned by agent (update environment)
+         std::cout << "Agent command result : " << command->GetCommandName() << std::endl;
 
-            // mark command as complete
-            command->AddStatusComplete();
-         }
-
-         // defines a simple world
-         if (x < steps-5) {
-            *s = "empty";
-         } else {
-            *s = "wall";
-         }
-         agent->Update(wmeFront, s->c_str());
-         std::cout << "Updated information on input link" << std::endl;
+         // mark command as complete
+         command->AddStatusComplete();
       }
-      if (agent->GetRunState() == sml::sml_RUNSTATE_HALTED) {
-         std::cout << "Agent HALTED\n";
+
+      // defines a simple world
+      if (x < steps-5) {
+         *s = "empty";
+      } else {
+         *s = "wall";
       }
+      agent->Update(wmeFront, s->c_str());
+      std::cout << "Updated information on input link" << std::endl;
    }
 
    system("pause");
