@@ -33,7 +33,6 @@ void updateEventHandler(sml::smlUpdateEventId id, void* userData, sml::Kernel* k
    std::cout << "Updated information on input link" << std::endl;
 
    agentData->agent->ClearOutputLinkChanges();
-
 }
 
 //
@@ -52,6 +51,10 @@ void stopEventHandler(void* userData, sml::Agent* agent, char const* cmdName, sm
 
 int main(int, char**)
 {
+   std::cout << "sizeof char        : " << sizeof(char)        << " bytes\n";
+   std::cout << "sizeof sml::Kernel : " << sizeof(sml::Kernel) << " bytes\n";
+   std::cout << "sizeof sml::Agent  : " << sizeof(sml::Agent)  << " bytes\n";
+
    const int kernelPort = 12121;
    sml::Kernel* kernel = sml::Kernel::CreateKernelInNewThread(kernelPort);
    if (kernel->HadError()) {
