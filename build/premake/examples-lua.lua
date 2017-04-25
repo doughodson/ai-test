@@ -14,14 +14,14 @@ project "lua-luac"
       "../../lua-luac/**.c",
       "../../lua-luac/**.h"
    }
-   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.3" }
+   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.4" }
    libdirs     { Dep3rdPartyLibPath }
    defines { "_CONSOLE" }
    filter "Release32"
-      links { "lua-5.3.3" }
+      links { "lua-5.3.4" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
    filter "Debug32"
-      links { "lua-5.3.3_d" }
+      links { "lua-5.3.4_d" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
 
 -- lutok2 example
@@ -55,14 +55,14 @@ project "lua-repl"
       "../../lua-repl/**.c",
       "../../lua-repl/**.h"
    }
-   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.3" }
+   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.4" }
    libdirs     { Dep3rdPartyLibPath }
    defines { "_CONSOLE", }
    filter "Release32"
-      links { "lua-5.3.3" }
+      links { "lua-5.3.4" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
    filter "Debug32"
-      links { "lua-5.3.3_d" }
+      links { "lua-5.3.4_d" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
 
 
@@ -76,14 +76,14 @@ project "lua-repl-simple"
       "../../lua-repl-simple/**.c",
       "../../lua-repl-simple/**.h"
    }
-   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.3" }
+   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.4" }
    libdirs     { Dep3rdPartyLibPath }
    defines { "_CONSOLE", }
    filter "Release32"
-      links { "lua-5.3.3" }
+      links { "lua-5.3.4" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
    filter "Debug32"
-      links { "lua-5.3.3_d" }
+      links { "lua-5.3.4_d" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
 
 -- lua stock read-eval-print-loop, extended with my own lib
@@ -97,14 +97,14 @@ project "lua-repl-extend"
       "../../lua-repl-extend/**.c",
       "../../lua-repl-extend/**.h"
    }
-   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.3" }
+   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.4" }
    libdirs     { Dep3rdPartyLibPath }
    defines { "_CONSOLE", "LUA_COMPAT_MODULE" }
    filter "Release32"
-      links { "lua-5.3.3" }
+      links { "lua-5.3.4" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
    filter "Debug32"
-      links { "lua-5.3.3_d" }
+      links { "lua-5.3.4_d" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
 
 -- lua mylib C++ lib extension as a DLL
@@ -139,13 +139,13 @@ project "lua-test1"
       "../../lua-test1/**.c",
       "../../lua-test1/**.h"
    }
-   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.3" }
+   includedirs { Dep3RDPartyRoot .. "/src/lua-5.3.4" }
    libdirs     { Dep3rdPartyLibPath }
    defines { "_CONSOLE", "LUA_COMPAT_MODULE" }
    filter "Release32"
-      links { "lua-5.3.3" }
+      links { "lua-5.3.4" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
    filter "Debug32"
-      links { "lua-5.3.3_d" }
+      links { "lua-5.3.4_d" }
       links {"Ws2_32", "Winmm", "comctl32", "gdi32"}
 

@@ -3,6 +3,8 @@
 --
 -- Target of interest:
 --     vs2013     (Visual Studio 2013)
+--     vs2015     (Visual Studio 2015)
+--     vs2017     (Visual Studio 2017)
 --
 
 -- we must have an ide/compiler specified

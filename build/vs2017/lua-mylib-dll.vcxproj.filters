@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lualib">
+      <UniqueIdentifier>{BE65480C-AA07-73E2-93C2-86367F03FA32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lualib\include">
+      <UniqueIdentifier>{316BC65B-1D39-BA61-06CD-2A88F23996C6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\lua-mylib-dll\lualib\include\lauxlib.h">
+      <Filter>lualib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua-mylib-dll\lualib\include\lua.h">
+      <Filter>lualib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua-mylib-dll\lualib\include\luaconf.h">
+      <Filter>lualib\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua-mylib-dll\lualib\include\lualib.h">
+      <Filter>lualib\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lua-mylib-dll\mylib.cpp" />
+  </ItemGroup>
+</Project>

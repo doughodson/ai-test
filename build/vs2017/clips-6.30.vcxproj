@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release32|Win32">
+      <Configuration>Release32</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug32|Win32">
+      <Configuration>Debug32</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{14864C8E-003E-8EDB-6945-6737551C29CC}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>clips-6.30</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
+    <OutDir>..\..\3rdparty\lib\vs2017-32\</OutDir>
+    <IntDir>obj\Release32\clips-6.30\</IntDir>
+    <TargetName>clips-6.30</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+    <OutDir>..\..\3rdparty\lib\vs2017-32\</OutDir>
+    <IntDir>obj\Debug32\clips-6.30\</IntDir>
+    <TargetName>clips-6.30_d</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release32|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug32|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\agenda.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\analysis.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\argacces.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\bload.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\bmathfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\bsave.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\classcom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\classexm.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\classfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\classinf.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\classini.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\classpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\clips.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\clsltpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\commline.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\conscomp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\constant.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\constrct.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\constrnt.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\crstrtgy.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrcbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrccmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrccom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrcpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrnbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrnchk.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrncmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrnops.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrnpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\cstrnutl.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\default.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\defins.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\developr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffctbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffctbsc.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffctcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffctdef.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffctpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffnxbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffnxcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffnxexe.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffnxfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dffnxpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dfinsbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\dfinscmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\drive.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\emathfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\engine.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\envrnmnt.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\evaluatn.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\expressn.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\exprnbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\exprnops.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\exprnpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\extnfunc.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factbld.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factcom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factgen.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\facthsh.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factlhs.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factmch.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factmngr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factprt.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factqpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factqury.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factrete.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\factrhs.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\filecom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\filertr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\generate.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\genrcbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\genrccmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\genrccom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\genrcexe.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\genrcfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\genrcpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\globlbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\globlbsc.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\globlcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\globlcom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\globldef.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\globlpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\immthpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\incrrset.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\inherpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\inscom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\insfile.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\insfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\insmngr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\insmoddp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\insmult.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\inspsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\insquery.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\insqypsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\iofun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\lgcldpnd.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\match.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\memalloc.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\miscfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\modulbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\modulbsc.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\modulcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\moduldef.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\modulpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\modulutl.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\msgcom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\msgfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\msgpass.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\msgpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\multifld.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\multifun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\network.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\object.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objrtbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objrtbld.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objrtcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objrtfnx.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objrtgen.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\objrtmch.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\parsefun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\pattern.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\pprint.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\prccode.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\prcdrfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\prcdrpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\prdctfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\prntutil.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\proflfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\reorder.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\reteutil.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\retract.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\router.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulebin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulebld.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulebsc.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulecmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulecom.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulecstr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\ruledef.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\ruledlt.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulelhs.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\rulepsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\scanner.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\setup.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\sortfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\strngfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\strngrtr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\symblbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\symblcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\symbol.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\sysdep.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\textpro.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltbin.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltbsc.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltcmp.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltdef.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltfun.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltlhs.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltpsr.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltrhs.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\tmpltutl.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\userdata.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\usrsetup.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\utility.h" />
+    <ClInclude Include="..\..\3rdparty\src\clips-6.30\watch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\agenda.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\analysis.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\argacces.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\bload.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\bmathfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\bsave.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\classcom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\classexm.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\classfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\classinf.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\classini.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\classpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\clsltpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\commline.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\conscomp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\constrct.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\constrnt.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\crstrtgy.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrcbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrccom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrcpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrnbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrnchk.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrncmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrnops.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrnpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\cstrnutl.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\default.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\defins.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\developr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffctbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffctbsc.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffctcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffctdef.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffctpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffnxbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffnxcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffnxexe.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffnxfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dffnxpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dfinsbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\dfinscmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\drive.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\emathfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\engine.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\envrnmnt.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\evaluatn.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\expressn.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\exprnbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\exprnops.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\exprnpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\extnfunc.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factbld.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factcom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factgen.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\facthsh.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factlhs.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factmch.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factmngr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factprt.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factqpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factqury.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factrete.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\factrhs.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\filecom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\filertr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\generate.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\genrcbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\genrccmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\genrccom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\genrcexe.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\genrcfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\genrcpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\globlbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\globlbsc.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\globlcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\globlcom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\globldef.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\globlpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\immthpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\incrrset.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\inherpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\inscom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\insfile.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\insfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\insmngr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\insmoddp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\insmult.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\inspsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\insquery.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\insqypsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\iofun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\lgcldpnd.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\memalloc.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\miscfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\modulbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\modulbsc.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\modulcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\moduldef.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\modulpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\modulutl.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\msgcom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\msgfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\msgpass.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\msgpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\multifld.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\multifun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objrtbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objrtbld.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objrtcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objrtfnx.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objrtgen.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\objrtmch.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\parsefun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\pattern.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\pprint.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\prccode.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\prcdrfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\prcdrpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\prdctfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\prntutil.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\proflfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\reorder.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\reteutil.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\retract.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\router.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulebin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulebld.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulebsc.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulecmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulecom.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulecstr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\ruledef.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\ruledlt.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulelhs.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\rulepsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\scanner.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\sortfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\strngfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\strngrtr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\symblbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\symblcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\symbol.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\sysdep.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\textpro.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltbin.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltbsc.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltcmp.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltdef.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltfun.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltlhs.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltpsr.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltrhs.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\tmpltutl.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\userdata.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\userfunctions.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\utility.c" />
+    <ClCompile Include="..\..\3rdparty\src\clips-6.30\watch.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

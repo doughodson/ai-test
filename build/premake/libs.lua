@@ -1,17 +1,17 @@
      
 -- lua
-project "lua-5.3.3"
+project "lua-5.3.4"
    kind "StaticLib"
    -- destination directory for compiled binary target
    targetdir (targetDirPath)
    files {
-      "../../3rdparty/src/lua-5.3.3/**.h",
-      "../../3rdparty/src/lua-5.3.3/**.hpp",
-      "../../3rdparty/src/lua-5.3.3/**.cpp",
-      "../../3rdparty/src/lua-5.3.3/**.c"
+      "../../3rdparty/src/lua-5.3.4/**.h",
+      "../../3rdparty/src/lua-5.3.4/**.hpp",
+      "../../3rdparty/src/lua-5.3.4/**.cpp",
+      "../../3rdparty/src/lua-5.3.4/**.c"
    }
    defines { "LUA_COMPAT_MODULE" }
-   targetname "lua-5.3.3"
+   targetname "lua-5.3.4"
 
 project "lua-5.1.5"
    kind "StaticLib"
